@@ -1,3 +1,6 @@
+# To run Terraform automatically with BitBucket Pipeline
+# $SECRET_KEY -> secured JSON key (service account, configured in Repository Variables in BitBucket)
+# $GOOGLE_CREDENTIALS -> /secret-key.json (configured in Repository Variables in BitBucket)
 image: hashicorp/terraform:light
 pipelines:
     branches:
