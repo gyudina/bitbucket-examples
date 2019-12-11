@@ -1,0 +1,17 @@
+image: hashicorp/terraform:light
+pipelines:
+    branches:
+        master:
+            - step:
+                name: Plan infrastructure changes
+                script:
+                    - echo $SECRET_KEY > $GOOGLE_CREDENTIALS
+                    - terraform init
+                    - terraform plan
+            - step:
+                name: Apply infrastructure changes
+                trigger: manual
+                script:
+                    - echo $SECRET_KEY > $GOOGLE_CREDENTIALS
+                    - terraform init
+                    - terraform apply -auto-approve
